@@ -40,7 +40,7 @@ public class IntroActivity extends Activity {
             @Override
             public void onClick(View v) {
                 try {
-                    String text = getHtml("http://www.utexas.edu/operations/");
+                    String text = getHtml("http://whyisthetowerorange.com/");
                     mStatus =  getStatus(text);
 
                 } catch (IOException e) {
@@ -95,13 +95,19 @@ public class IntroActivity extends Activity {
     }
 
     public static String getStatus(String html){
-        Integer pos = html.indexOf("<a href=\"http://www.utexas.edu/spotlight/tower_lighting.html\">");
+        Integer pos = html.indexOf("<p class=\"reason\"><a href=");
         System.out.println("pos of status: " + pos);
-        String test = html.substring(pos+62, pos+70);
-        if (test.equals("standard"))
-            return "The tower is not orange";
-        else
-            return "The Tower is orange";
-
+        Integer increment = 28;
+        String ans = "";
+        while (!html.substring(pos+increment,pos+1+increment).equals(">") ) {
+            //     System.out.println("first while: " + html.substring(pos+increment,pos+1+increment));
+            increment++;
+        }
+        while (!html.substring(pos+increment,pos+1+increment).equals("<") ) {
+            ans += html.substring(pos+increment,pos+1+increment);
+            increment++;
+        }
+       // System.out.println("ans: " + ans);
+        return ans;
     }
 }

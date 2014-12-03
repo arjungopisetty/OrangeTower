@@ -75,12 +75,11 @@ public class IntroActivity extends Activity {
 
     public static String getStatus(String html){
         Integer pos = html.indexOf("<p class=\"reason\"><a href=");
-<<<<<<< HEAD
-        //System.out.println("pos of status: " + pos);
+
+        Log.i("pos of status", "pos: " + pos);
         Integer increment = 28;
         String ans = "";
         while (!html.substring(pos + increment, pos + 1 + increment).equals(">") ) {
-            //     System.out.println("first while: " + html.substring(pos+increment,pos+1+increment));
             increment++;
         }
         while (!html.substring(pos + increment, pos + 1 + increment).equals("<") ) {
@@ -94,20 +93,6 @@ public class IntroActivity extends Activity {
         }
 
         Log.i("ans", ans);
-=======
-        System.out.println("pos of status: " + pos);
-        Integer increment = 28;
-        String ans = "";
-        while (!html.substring(pos+increment,pos+1+increment).equals(">") ) {
-            //     System.out.println("first while: " + html.substring(pos+increment,pos+1+increment));
-            increment++;
-        }
-        while (!html.substring(pos+increment,pos+1+increment).equals("<") ) {
-            ans += html.substring(pos+increment,pos+1+increment);
-            increment++;
-        }
-       // System.out.println("ans: " + ans);
->>>>>>> FETCH_HEAD
         return ans;
     }
 }

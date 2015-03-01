@@ -74,7 +74,7 @@ public class IntroActivity extends Activity {
     }
 
     public static String getStatus(String html){
-        Integer pos = html.indexOf("<p class=\"reason\"><a href=");
+        Integer pos = html.indexOf("<div id=\"reason\"><a href=");
 
         Log.i("pos of status", "pos: " + pos);
         Integer increment = 28;
@@ -93,6 +93,6 @@ public class IntroActivity extends Activity {
         }
 
         Log.i("ans", ans);
-        return ans;
+        return ans.substring(1,ans.length());
     }
 }
